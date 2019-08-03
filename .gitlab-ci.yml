@@ -16,9 +16,9 @@ after_script:
 build1:
   stage: build
   script:
-    - go build -o /tmp/oke-admission-webhook
+    - go build -o oke-admission-webhook
     - docker build --no-cache -t iad.ocir.io/espsnonprodint/autostg/oke-admission-webhook:v1 .
-    - rm -rf /tmp/oke-admission-webhook
+    - rm -rf oke-admission-webhook
     - docker push iad.ocir.io/espsnonprodint/autostg/oke-admission-webhook:v1
 
 test1:
