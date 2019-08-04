@@ -1,0 +1,1 @@
+openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes -keyout oke-webhook.key -out oke-webhook.crt -subj /CN=oke-admission-webhook-svc.kube-system.svc.cluster.local
