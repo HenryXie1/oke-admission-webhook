@@ -1,22 +1,19 @@
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingWebhookConfiguration
 metadata:
-  name: validation-webhook-example-cfg
+  name: oke-validation-webhook-poc-cfg
   labels:
-    app: admission-webhook-example
+    app: oke-validation-webhook-poc
 webhooks:
-  - name: required-labels.banzaicloud.com
+  - name: oke-validation-webhook.oracle.com
     clientConfig:
       service:
-        name: admission-webhook-example-webhook-svc
+        name: oke-admission-webhook-svc
         namespace: default
         path: "/validate"
-      caBundle: ${CA_BUNDLE}
+      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURqRENDQW5TZ0F3SUJBZ0lVZTY0Zkh1NkZLYXB6S0E2OEkxUXVkaUNsYXJZd0RRWUpLb1pJaHZjTkFRRUwKQlFBd1hqRUxNQWtHQTFVRUJoTUNWVk14RGpBTUJnTlZCQWdUQlZSbGVHRnpNUTh3RFFZRFZRUUhFd1pCZFhOMAphVzR4RHpBTkJnTlZCQW9UQms5eVlXTnNaVEVNTUFvR0ExVUVDeE1EVDBSWU1ROHdEUVlEVlFRREV3WkxPRk1nClEwRXdIaGNOTVRrd05qRXhNREF4TVRBd1doY05NalF3TmpBNU1EQXhNVEF3V2pCZU1Rc3dDUVlEVlFRR0V3SlYKVXpFT01Bd0dBMVVFQ0JNRlZHVjRZWE14RHpBTkJnTlZCQWNUQmtGMWMzUnBiakVQTUEwR0ExVUVDaE1HVDNKaApZMnhsTVF3d0NnWURWUVFMRXdOUFJGZ3hEekFOQmdOVkJBTVRCa3M0VXlCRFFUQ0NBU0l3RFFZSktvWklodmNOCkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFPZ3BsRzhIeE44UEZvT05IRFRJalQyUnhVOGsxdXdwUUl3Wk5Gd1AKVzBhOThRbjRrSDJMM1ZyZ2dMN3Rob0Z1akRVYlNuSGZQcEVIaUJWQ3lTTFoyUlBIdVlXQ2hFTU9WNkVuc3N6VApndnlzTG9MRUlHdFQ3U3RpQzFJb3FCazROOEp1OFdVSXdHbEcrNmxZWlJwMDJSSUNRUFhGNE43UWI1WHpXSTN3CkN2SUx5OEU4Wm5VTUNDS1NnWjdiemFDeDF4SWhRYThRVkZCM3UyRmVZK0twN1dJV2tYL0xFOWFaZEZTQ0U2N0YKTWxEamkyd05LSlZGU0U4VmxZN0lGR3dFRFdPNm5YcTRZalV5QXU5VzhWTkJRdFdVUWxvMVd5OU45WlNwaDRUZgpON0tQYnFmMVFPL3F1YlYzYVg5STd2bkVEbHJpQzE3Rm1LRFhvcWgyMWxaaXVSOENBd0VBQWFOQ01FQXdEZ1lEClZSMFBBUUgvQkFRREFnRUdNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdIUVlEVlIwT0JCWUVGSU9Cb1lYcEkvZGQKNTlZT3VhWmJyZFVZaVdvS01BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQnpYUUl5dGVwcFpLbU1CNk5CaU9nYgpFWnNadUsrMHJTeGp1Q2NicHdyQnpzZHc5ck5KRnNCUWdBNmg0RmFLeENQblFva3lqNGtuSUhOMEFwWkE1WlpsCjA5YjNJRER3c0gxVitEMnBtcSttMFl2UUZZN2FuL1lKREhwd3FvSm45VnNsZVQwd0RteDMzUHlrQi9CbW1aNWwKUmpHdkFhbVhnbG1JSlFSMVAvaHRySC9WankwZ3RTYTdOalpiQStxL0pSVnE1ZEZQVGpucHRjUXhmdXN3WlFrSQp3dXh1UUVnNDJ5bEN4OHFaeEdpYzZYWmV3U0kxMHAwMUREYjBOb0JhbGxnSGRSOFBTM1hBNTRwakRoSzY3ZjNqClNMc0IrOE8xOVdKTG5aVThnZlZNL1JuTlJ5alVacSsvVTN6U0dlKyswbXNXaWRtV1VMWVY3bUdBM3k0TjErODIKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
     rules:
-      - operations: [ "CREATE" ]
+      - operations: [ "CREATE","UPDATE"]
         apiGroups: ["apps", ""]
         apiVersions: ["v1"]
-        resources: ["deployments","services"]
-    namespaceSelector:
-      matchLabels:
-        admission-webhook-example: enabled
+        resources: ["services"]
