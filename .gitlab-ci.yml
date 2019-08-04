@@ -24,22 +24,7 @@ build1:
 build2:
   stage: build
   script:
+    - kubectl replace --force -f deployment/validatingwebhook.yaml
     - kubectl replace --force -f deployment/deployment.yaml
     - kubectl replace --force -f deployment/service.yaml
 
-test1:
-  stage: test
-  script:
-    - echo "Do a test here"
-    - echo "For example run a test suite"
-
-test2:
-  stage: test
-  script:
-    - echo "Do another parallel test here"
-    - echo "For example run a lint test"
-
-deploy1:
-  stage: deploy
-  script:
-    - echo "Do your deploy here"
