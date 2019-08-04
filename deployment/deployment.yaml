@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: kube-system
   name: oke-admission-webhook-deployment
   labels:
     app: oke-admission-webhook
