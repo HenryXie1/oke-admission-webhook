@@ -130,7 +130,7 @@ func (whsvr *WebhookServer) validate(ar *v1beta1.AdmissionReview) *v1beta1.Admis
 	var result *metav1.Status
 	glog.Info("available annotations:", availableannotations)
 	glog.Info("required annotations", requiredannotations)
-	glog.Info("service type is",serviceType)
+	glog.Info("service type is ",serviceType)
 	if serviceType != "LoadBalancer" {
 		allowed = true
 		result = &metav1.Status{
