@@ -168,7 +168,7 @@ func (whsvr *WebhookServer) serve(w http.ResponseWriter, r *http.Request) {
 			body = data
 		}
 	}
-	glog.Info(body)
+	
 	if len(body) == 0 {
 		glog.Error("empty body")
 		http.Error(w, "empty body", http.StatusBadRequest)
@@ -177,7 +177,7 @@ func (whsvr *WebhookServer) serve(w http.ResponseWriter, r *http.Request) {
 
 	// verify the content type is accurate
 	contentType := r.Header.Get("Content-Type")
-	glog.Info("contenttype is " + contentType)
+	
 	if contentType != "application/json" {
 		glog.Errorf("Content-Type=%s, expect application/json", contentType)
 		http.Error(w, "invalid Content-Type, expect `application/json`", http.StatusUnsupportedMediaType)
