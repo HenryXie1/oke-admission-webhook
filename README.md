@@ -18,6 +18,10 @@ Thus no security list will be upated by kuernetes. This is an example that how w
 ```
 Error from server (required annotations value are not set): error when creating "deployment/test-service.yaml": admission webhook "oke-validation-webhook.oracle.com" denied the request: required annotations value are not set
 ```
+* use below command to check details of the controller logs
+```
+ kubectl logs -f -n kube-system `kubectl get po -n kube-system |grep oke-admission |awk '{print $1}'`
+```
 * Remove belowcomment of annotation in test-service.yaml, the error shall be gone
 ```
 #annotations:
