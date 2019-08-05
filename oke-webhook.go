@@ -95,6 +95,7 @@ func (whsvr *WebhookServer) validate(ar *v1beta1.AdmissionReview) *v1beta1.Admis
 	req := ar.Request
 	var (
 		availableannotations            map[string]string
+		serviceType						corev1.ServiceType
 		objectMeta                      *metav1.ObjectMeta
 		resourceNamespace, resourceName string
 	)
@@ -115,6 +116,7 @@ func (whsvr *WebhookServer) validate(ar *v1beta1.AdmissionReview) *v1beta1.Admis
 		}
 		resourceName, resourceNamespace, objectMeta = service.Name, service.Namespace, &service.ObjectMeta
 		availableannotations = service.Annotations
+		serviceType = service.Spec.Type
 	}
 
 	if !validationRequired(ignoredNamespaces, objectMeta) {
@@ -128,6 +130,7 @@ func (whsvr *WebhookServer) validate(ar *v1beta1.AdmissionReview) *v1beta1.Admis
 	var result *metav1.Status
 	glog.Info("available annotations:", availableannotations)
 	glog.Info("required annotations", requiredannotations)
+	glog.Info("service type is",serviceType)
 	if len(availableannotations) == 0 {
 		allowed = false
 		result = &metav1.Status{

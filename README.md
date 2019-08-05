@@ -1,7 +1,7 @@
 # OKE Admission Control Webhook For Network POC
 ## Requirement:
  We need implement a policy requested by security team that kubernetes service should have an annotation : service.beta.kubernetes.io/oci-load-balancer-security-list-management-mode: None
-Thus no security list will be upated by kuernetes. This is an example that how we build our own admission controller which implements various policies from security or other teams. ie we can add only internal loadbalancer is allowed for internal service.....etc
+Thus no security list will be updated by kubernetes. This is an example that how we build our own admission controller which implements various policies from security or other teams. ie we can add only internal loadbalancer is allowed for internal service.....etc
 ## Solution:
 * git clone https://github.com/HenryXie1/oke-admission-webhook
 * go build -o oke-admission-webhook
