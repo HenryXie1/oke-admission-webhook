@@ -3,7 +3,7 @@
  We need implement a policy requested by security team that kubernetes service should have an annotation : service.beta.kubernetes.io/oci-load-balancer-security-list-management-mode: None
 Thus no security list will be upated by kuernetes. This is an example that how we build our own admission controller which implements various policies from security or other teams. ie we can add only internal loadbalancer is allowed for internal service.....etc
 ## Solution:
-* git clone this repo
+* git clone https://github.com/HenryXie1/oke-admission-webhook
 * go build -o oke-admission-webhook
 * docker build --no-cache -t repo-url/oke-admission-webhook:v1 .
 * rm -rf oke-admission-webhook
