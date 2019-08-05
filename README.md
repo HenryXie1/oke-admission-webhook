@@ -27,3 +27,5 @@ Error from server (required annotations value are not set): error when creating 
 #annotations:
  #   service.beta.kubernetes.io/oci-load-balancer-security-list-management-mode: None
  ```
+ ## Demo:
+ ![Demo!](https://imgur.com/JrYZmMJ)
