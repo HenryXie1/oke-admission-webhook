@@ -95,7 +95,7 @@ func (whsvr *WebhookServer) validate(ar *v1beta1.AdmissionReview) *v1beta1.Admis
 	req := ar.Request
 	var (
 		availableannotations            map[string]string
-		serviceType						corev1.ServiceType
+		serviceType                     corev1.ServiceType
 		objectMeta                      *metav1.ObjectMeta
 		resourceNamespace, resourceName string
 	)
