@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
- #annotations:
- #  service.beta.kubernetes.io/oci-load-balancer-security-list-management-mode: None
+  annotations:
+    service.beta.kubernetes.io/oci-load-balancer-security-list-management-mode: None
   labels:
     name: test-service
   name: test-service-nodeport
