@@ -20,6 +20,16 @@ spec:
           image: iad.ocir.io/espsnonprodint/autostg/oke-admission-webhook:v1
           imagePullPolicy: Always
           args:
+            - -tlsCertFile=/mnt/k8s/cert.pem
+            - -tlsKeyFile=/mnt/k8s/key.pem
             - -alsologtostderr
             - -v=4
             - 2>&1
+          volumeMounts:
+            - name: oke-webhook-certs
+              mountPath: /mnt/k8s
+              readOnly: true
+      volumes:
+        - name: oke-webhook-certs
+          secret:
+            secretName: oke-admission-webhook-secret
