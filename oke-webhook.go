@@ -131,10 +131,15 @@ func (whsvr *WebhookServer) validate(ar *v1beta1.AdmissionReview) *v1beta1.Admis
 	glog.Info("available annotations:", availableannotations)
 	glog.Info("required annotations", requiredannotations)
 	glog.Info("service type is",serviceType)
-	if len(availableannotations) == 0 {
+	if serviceType != "LoadBalancer" {
+		allowed = true
+		result = &metav1.Status{
+		Reason: "service type is not LoadBalancer,proceed without check",
+		}
+	} else if len(availableannotations) == 0 {
 		allowed = false
 		result = &metav1.Status{
-		Reason: "required annotations value are not set",
+		Reason: "No required annotations found in the service",
 			}
 	} else {
 	for key, value := range availableannotations {
