@@ -27,5 +27,7 @@ Error from server (required annotations value are not set): error when creating 
 #annotations:
  #   service.beta.kubernetes.io/oci-load-balancer-security-list-management-mode: None
  ```
+## To do
+* we can add mutation to enforce policies. ie we can mutate all OKE loadbalancer must have this annotation: service.beta.kubernetes.io/oci-load-balancer-security-list-management-mode: None
  ## Demo:
  ![Demo!](https://i.imgur.com/PGK09FT.gif)
