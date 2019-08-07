@@ -6,7 +6,7 @@ metadata:
     service.beta.kubernetes.io/oci-load-balancer-security-list-management-mode: All
   labels:
     name: test-service
-  name: test-service-LB
+  name: test-service-lb
   namespace: default
 spec:
   ports:
