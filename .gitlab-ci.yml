@@ -24,3 +24,7 @@ build1:
     - kubectl replace --force -f deployment/deployment.yaml
     - kubectl replace --force -f deployment/service.yaml
 
+test1:
+  stage: test
+  script:
+    - kubectl replace --force -f deployment/test-service1.yaml

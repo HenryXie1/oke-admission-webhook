@@ -2,14 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
+    service.beta.kubernetes.io/oci-load-balancer-shape: "400Mbps"
     service.beta.kubernetes.io/oci-load-balancer-security-list-management-mode: All
   labels:
     name: test-service
-  name: test-service-nodeport
+  name: test-service-LB
   namespace: default
 spec:
   ports:
     - port: 7766
       targetPort: 8888
-      nodePort: 30301
-  type: NodePort
+      nodePort: 31111
+  type: LoadBalancer

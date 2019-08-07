@@ -143,7 +143,7 @@ func (whsvr *WebhookServer) validate(ar *v1beta1.AdmissionReview) *v1beta1.Admis
 			}
 	} else {
 	for key, value := range availableannotations {
-		if requiredannotations[key] != value {
+		if requiredannotations[key] != value && requiredannotations[key] != ""{
 			allowed = false
 			glog.Info("required annotations: " + key + ":" + requiredannotations[key] + " value are not set")
 			result = &metav1.Status{
