@@ -3,7 +3,7 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/oci-load-balancer-shape: "400Mbps"
-    service.beta.kubernetes.io/oci-load-balancer-security-list-management-mode: All
+    service.beta.kubernetes.io/oci-load-balancer-security-list-management-mode: None
   labels:
     name: test-service
   name: test-service-lb
