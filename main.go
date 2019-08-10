@@ -48,7 +48,7 @@ func main() {
 	}()
 
 	glog.Info("Server started")
-	//glog.Info("This is POC Test for CI/CD")
+	glog.Info("This is POC Test for CI/CD")
 
 	// listening OS shutdown singal
 	signalChan := make(chan os.Signal, 1)
