@@ -1,4 +1,4 @@
-# default tls certs last 1 year ,run below renew each year!
+# default tls certs last 1 year ,run below renew each year!!
 ./deployment/webhook-create-signed-cert.sh --service oke-admission-webhook-svc --namespace kube-system --secret oke-admission-webhook-secret
 
 kubectl replace --force -f deployment/deployment.yaml
